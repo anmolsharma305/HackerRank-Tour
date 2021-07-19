@@ -1,0 +1,68 @@
+/*
+@Author: Anmol Kumar Sharma
+
+Problem: Bill Division
+Problem Link: https://www.hackerrank.com/challenges/bon-appetit/problem
+*/
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+    
+    public static void bonAppetit(List<Integer> bill, int k, int b) {
+        int n = bill.size();
+        int sum = 0;
+        int share = 0;
+        
+        //finding sum of bill not including the item which Anna does not have i.e, k
+        for(int i = 0; i < n ; i++){
+            if(i == k) continue;
+            
+            sum += bill.get(i);
+        }
+        
+        //calculating the share
+        share = sum / 2;
+        
+        //checking if brian calculated the correct share or not
+        if(share == b) 
+            System.out.println("Bon Appetit");
+        
+        else
+            System.out.println(Math.abs(share - b));
+        
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        int n = Integer.parseInt(firstMultipleInput[0]);
+
+        int k = Integer.parseInt(firstMultipleInput[1]);
+
+        List<Integer> bill = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int b = Integer.parseInt(bufferedReader.readLine().trim());
+
+        Result.bonAppetit(bill, k, b);
+
+        bufferedReader.close();
+    }
+}
