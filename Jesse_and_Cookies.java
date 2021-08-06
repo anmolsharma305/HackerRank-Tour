@@ -3,6 +3,8 @@
 
 Problem: Jesse and Cookies
 Problem Link: https://www.hackerrank.com/challenges/jesse-and-cookies/problem
+
+Approach: Using Max Heap 
 */
 
 import java.io.*;
